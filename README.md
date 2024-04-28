@@ -1,8 +1,12 @@
 # Leetcode-Live-Ranking-Finder
 
-Leetcode Live Ranking Finder: Just enter the URL or username of a Leetcode user
+LeetCode Live Ranking Finder: Enter the URL or username of a LeetCode user at 
 
-Search leetcode live ranking here:
+https://leetcode-badge.vercel.app/
+
+for the badge search option...
+
+# Search leetcode live ranking here:
 
 https://yashawanthtechprojects.on.drv.tw/leetcoderank.html
 
