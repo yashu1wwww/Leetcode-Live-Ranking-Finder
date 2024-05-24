@@ -1,6 +1,6 @@
 # Leetcode-Live-Ranking-Finder
 
-LeetCode Live Ranking Finder: Enter the URL or username of a LeetCode user at 
+LeetCode Live Ranking Finder: Enter the username of a LeetCode user at 
 
 https://leetcode-badge.vercel.app/
 
