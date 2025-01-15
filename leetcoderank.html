@@ -1,5 +1,197 @@
 <!-- Copying the code is easy, but when you create it, you have to become busy -->
-
-For Source Code Open Link & Press Ctrl+U
-
-To view the source code of a webpage on Android, add view-source: before url
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- favicon  -->
+    <link rel="icon" href="https://leetcode.com/favicon.ico" type="image/x-icon">
+  <style>
+    html, body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+ 
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://i.postimg.cc/wvTfCXdv/plant-leaf-flower-blossom.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f2f2f2;
+        font-size: 16px;
+        color: #ffffff;
+    }
+        .container {
+            text-align: center; 
+            margin-top: 50px; 
+        }
+        .target-cursor {
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: moveCursor 0.3s infinite alternate;
+        }
+ 
+        @keyframes moveCursor {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
+        }
+ .search-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.username-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #0074D9;
+    border-radius: 4px 0 0 4px;
+    width: 300px;
+    margin-right: -2px; 
+}
+ 
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0074D9;
+    color: #fff;
+    border: 2px solid #0074D9;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+ 
+.search-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+}
+  </style>
+    <title>LEETCODE LIVE RANKING FINDER</title>
+</head>
+<body>
+    <div class="target-cursor"></div>
+    <p align="center">
+        <b><img src="https://readme-typing-svg.herokuapp.com?font=Montserrat&size=20&duration=5001&color=8B0000&vCenter=true&center=true&width=460&lines=WLC+TO+LEETCODE;LIVE+RANKING+COUNT;HAPPY+SEARCHING...!"></b>
+    </p>
+    <br>
+    <div class="container">
+        <button style="background-color: white; padding: 10px 20px; margin-right: 10px;">
+            <a href="mailto:yashwanth6678@gmail.com" style="color: black; text-decoration: none; font-size: 18px; font-weight: bold;">Contact Me</a>
+        </button>
+        <button style="background-color: white; padding: 10px 20px; margin-left: 10px;">
+            <a href="https://github.com/yashu1wwww" style="color: black; text-decoration: none; font-size: 18px; font-weight: bold;">GitHub Account</a>
+        </button>
+		<br>
+		<br>
+		 <button style="background-color: white; padding: 10px 20px; margin-left: 10px;">
+            <a href="https://github.com/JacobLinCool/LeetCode-Stats-Card" style="color: black; text-decoration: none; font-size: 18px; font-weight: bold;">For User Full Stats Display</a>
+        </button>
+    </div>
+    <div class="container" style="margin-top: 20px;">
+        <button style="background-color: white; padding: 10px 20px; margin-right: 10px;">
+            <a href="https://yashawanthtechprojects.on.drv.tw/web.html" style="color: black; text-decoration: none; font-size: 18px; font-weight: bold;">Click Here For Web Development Projects</a>
+        </button>
+    </div>
+    <div class="container">
+    <div class="outer-black-box">
+        <button style="background-color:#ce9d6c14; padding: 10px 20px; margin-right: 2px;">
+            <a style="color:black; text-decoration: none; font-size: 18px; font-weight: bold;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/LeetCode_Logo_black_with_text.svg/1280px-LeetCode_Logo_black_with_text.svg.png" alt="Image" style="height: 23px; width: auto;">
+                LIVE RANKING FINDER
+            </a>
+        </button>
+    </div>
+	<br>
+  <div class="search-container">
+    <input type="text" class="username-input" id="username" placeholder="Enter LeetCode Username or URL">
+    <button class="search-button" onclick="search()">Search</button>
+</div>
+<br>
+<div class="badge-container" id="badge-container"></div>
+<div id="result"></div>
+</div>
+<div class="container" style="margin-top: 20px;">
+    <button style="background-color: #00000094; padding: -10px 20px; margin-right: 1px;">
+        <a style="color: white; text-decoration: none; font-size: 18px; font-weight: bold;">© ® Developed By Yashawanth R</a>
+    </button>
+</div>
+<script>
+    // Custom cursor
+    const targetCursor = document.querySelector('.target-cursor');
+    document.addEventListener('mousemove', (e) => {
+        targetCursor.style.left = e.clientX + 'px';
+        targetCursor.style.top = e.clientY + 'px';
+    });
+ 
+    document.getElementById('username').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            search();
+        }
+    });
+function search() {
+    var input = document.getElementById('username').value.trim();
+    var badgeContainer = document.getElementById('badge-container');
+ 
+    badgeContainer.innerHTML = '';
+ 
+    if (isValidURL(input)) {
+        if (!isValidInput(input)) {
+            return;
+        }
+        displayBadgeFromURL(input);
+    } else if (input !== '') {
+        displayBadge(input);
+    } else {
+        alert("Please enter a username or URL to search.");
+    }
+}
+ 
+function isValidInput(input) {
+    return input.startsWith('https://leetcode.com/') && input.match(/https:\/\/leetcode\.com\/[^\/]+(?:\/)?$/);
+}
+ 
+function isValidURL(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+ 
+function displayBadge(username) {
+    var badgeContainer = document.getElementById('badge-container');
+    var newBadge = document.createElement('img');
+    newBadge.setAttribute('src', 'https://img.shields.io/badge/dynamic/json?style=for-the-badge&labelColor=black&color=%23ffa116&label=Ranking&query=ranking&url=https%3A%2F%2Fleetcode-badge.vercel.app%2Fapi%2Fusers%2F' + username + '&logo=leetcode&logoColor=yellow');
+    newBadge.setAttribute('alt', 'LeetCode Ranking');
+    badgeContainer.appendChild(newBadge);
+}
+ 
+function displayBadgeFromURL(url) {
+    // Extract username from the URL
+    var username = url.match(/https:\/\/leetcode\.com\/([^\/]+)\/?$/)[1];
+    displayBadge(username);
+}
+</script>
+</body>
+</html>
